@@ -1,0 +1,135 @@
+// node-sass -o assets/css/css assets/css/sass/main.scss -w
+@mixin transform-rotate($degree) {
+    -moz-transform: rotate($degree);
+    -ms-transform: rotate($degree);
+    -o-transform: rotate($degree);
+    -webkit-transform: rotate($degree);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+html {
+    // standardize font across browsers
+    font-size: 16px;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    // set context of body to roughly 10px font-size (16 html * 0.625 body = 10px body)
+    // convert to ems (target/context = result). Ex: h1 is 48px, 48/10 = 4.8
+    font-size: 62.5%;
+}
+#landing {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: auto;
+    top: 0;
+    .page-scroll {
+        opacity: 0.55;
+        a {
+            display: inline-block;
+            // position: relative;
+            margin-top: 4em;
+            // padding: 0.15em 1em;
+            color: #04C2C9;
+            text-decoration: none;
+        }
+    }
+    .landing-overlay {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+    .parallax {
+        vertical-align: middle;
+        height: 100vh;
+        width: 100%;
+        max-width: none;
+        display: table;
+        .content {
+            width: 100%;
+            color: black;
+            margin: 0 auto;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            h1 {
+                margin: 0px;
+                font-size: 6em;
+                color: white;
+            }
+            .highlight {
+                color: #E31B6D;
+            }
+        }
+    }
+}
+.is-hidden {
+    visibility: hidden;
+}
+.is-visible {
+    visibility: visible;
+}
+.arrow {
+    border: solid #04C2C9;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.hexagon {
+    width: 400px;
+    height: 200px;
+    background: red;
+    @include transform-rotate(120deg);
+    margin: 200px auto;
+    overflow: hidden;
+    .hexagon-inside {
+        width: 100%;
+        height: 100%;
+        background: green;
+        @include transform-rotate(-60deg);
+    }
+    .hexagon-image {
+        width: 100%;
+        height: 100%;
+        // background-image: url('parallax1.jpg');
+    }
+}
+
+////////// MEDIA QUERIES //////////
+@media screen and (min-width: 480px) {
+    #landing .parallax .content {
+        h1 { font-size: 2.4em; }
+        .page-scroll a { font-size: 0.97em; }
+    }
+}
+@media only screen and (min-width: 600px) {
+    #landing .parallax .content {
+        h1 { font-size: 3em; }
+        .page-scroll a { font-size: 1.21em; }
+    }
+}
+@media only screen and (min-width: 768px) {
+    #landing .parallax .content {
+        h1 { font-size: 3.84em; }
+        .page-scroll a { font-size: 1.55em; }
+    }
+}
+@media only screen and (min-width: 992px) {
+    #landing .parallax .content {
+        h1 { font-size: 4.96em; }
+        .page-scroll a { font-size: 2em; }
+    }
+}
