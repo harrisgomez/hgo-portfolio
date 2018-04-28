@@ -18,10 +18,10 @@ $(document).ready(function() {
 
     function typeWriter(current_descr) {
         for(var i = 0; i < current_descr.length; i++) {
-            $(`<b class='is-hidden'>${current_descr[i]}</b>`).appendTo('.words-wrapper');
+            $(`<i class='is-hidden'>${current_descr[i]}</i>`).appendTo('.words-wrapper');
         }
 
-        $('.words-wrapper b').each(function(idx) {
+        $('.words-wrapper i').each(function(idx) {
             var $char = $(this);
             setTimeout(function() {
                 $($char).toggleClass('is-hidden is-visible');
@@ -30,7 +30,7 @@ $(document).ready(function() {
     }
 
     setInterval(function() {
-        if($('.words-wrapper b:last-child').hasClass('is-visible') && waiting_to_type) {
+        if($('.words-wrapper i:last-child').hasClass('is-visible') && waiting_to_type) {
             waiting_to_type = false;
             setTimeout(function() {
                 $('.words-wrapper').children().css('background-color', 'rgba(192,192,192,0.3)');

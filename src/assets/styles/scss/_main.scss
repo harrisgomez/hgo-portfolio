@@ -15,6 +15,7 @@ html, body {
 html {
     // standardize font across browsers
     font-size: 16px;
+    // overflow: hidden;
 }
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -22,23 +23,15 @@ body {
     // convert to ems (target/context = result). Ex: h1 is 48px, 48/10 = 4.8
     font-size: 62.5%;
 }
+body::-webkit-scrollbar {
+    display: none;
+}
 #landing {
     width: 100%;
     height: 100vh;
     position: relative;
     margin: auto;
     top: 0;
-    .page-scroll {
-        opacity: 0.55;
-        a {
-            display: inline-block;
-            // position: relative;
-            margin-top: 4em;
-            // padding: 0.15em 1em;
-            color: #04C2C9;
-            text-decoration: none;
-        }
-    }
     .landing-overlay {
         position: absolute;
         background-color: rgba(0, 0, 0, 0.5);
@@ -56,18 +49,55 @@ body {
         display: table;
         .content {
             width: 100%;
-            color: black;
+            color: white;
             margin: 0 auto;
             text-align: center;
             vertical-align: middle;
             display: table-cell;
-            h1 {
-                margin: 0px;
-                font-size: 6em;
-                color: white;
+            .text, .words-wrapper {
+                width: 60vw;
+                margin: 0 auto;
+            }
+            .text:before, .words-wrapper:after{
+                content: '';
+                display: block;
+                position: absolute;
+                background: white;
+                animation-name: stretch;
+                animation-duration: 0.85s;
+                animation-timing-function: ease-out;
+                animation-direction: normal;
+                animation-iteration-count: 1;
+                animation-play-state: running;
+                animation-delay: 0.25s;
+                animation-fill-mode: forwards;
+            }
+            .text:before {
+                height: 2px;
+            }
+            .words-wrapper:after {
+                right: calc((100vw - 60vw) / 2);
+                height: 1px;
+            }
+            @keyframes stretch {
+                0% {
+                    width: 0;
+                }
+                100% {
+                    width: 60vw;
+                }
             }
             .highlight {
                 color: #E31B6D;
+            }
+            .page-scroll {
+                opacity: 0.55;
+                a {
+                    display: inline-block;
+                    margin-top: 4em;
+                    color: #04C2C9;
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -89,47 +119,89 @@ body {
     -webkit-transform: rotate(45deg);
 }
 .hexagon {
-    width: 400px;
-    height: 200px;
+    width: 800px;
+    height: 400px;
     background: red;
     @include transform-rotate(120deg);
-    margin: 200px auto;
+    margin-left: -150px;
     overflow: hidden;
+    visibility: hidden;
     .hexagon-inside {
         width: 100%;
         height: 100%;
         background: green;
         @include transform-rotate(-60deg);
+        overflow: hidden;
     }
     .hexagon-image {
         width: 100%;
         height: 100%;
-        background-image: url('~parallax1');
+        background-image: url('~profile');
+        background-position: center;
+        background-size: 54% 100%;
+        @include transform-rotate(-60deg);
+        visibility: visible;
     }
+}
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+#about {
+    .header {
+        border: 1px solid blue;
+    }
+}
+.skill-levels {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    top: 0;
+    border: 1px solid green;
 }
 
 ////////// MEDIA QUERIES //////////
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
     #landing .parallax .content {
-        h1 { font-size: 2.4em; }
-        .page-scroll a { font-size: 0.97em; }
+        .page-scroll a { font-size: 0.6em; }
     }
 }
-@media only screen and (min-width: 600px) {
+@media screen and (min-width: 480px) {
     #landing .parallax .content {
-        h1 { font-size: 3em; }
-        .page-scroll a { font-size: 1.21em; }
+        .text, .words-wrapper { font-size: 1.45em; }
+        .page-scroll a { font-size: 0.725em; }
+    }
+}
+@media only screen and (min-width: 576px) {
+    #landing .parallax .content {
+        .text, .words-wrapper { font-size: 1.74em; }
+        .page-scroll a { font-size: 0.87em; }
     }
 }
 @media only screen and (min-width: 768px) {
     #landing .parallax .content {
-        h1 { font-size: 3.84em; }
-        .page-scroll a { font-size: 1.55em; }
+        .text, .words-wrapper { font-size: 2.32em; }
+        .page-scroll a { font-size: 1.16em; }
     }
 }
 @media only screen and (min-width: 992px) {
     #landing .parallax .content {
-        h1 { font-size: 4.96em; }
-        .page-scroll a { font-size: 2em; }
+        .text, .words-wrapper {
+            font-size: 3em;
+            width: 45vw;
+        }
+        .words-wrapper:after {
+            right: calc((100vw - 45vw) / 2);
+            height: 1px;
+        }
+        @keyframes stretch {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 45vw;
+            }
+        }
+        .page-scroll a { font-size: 1.5em; }
     }
 }
