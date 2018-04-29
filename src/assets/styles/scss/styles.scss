@@ -1,3 +1,7 @@
 // this imports _main.scss module
 // don't require the '_' or file extension when importing
-@import "./main";
+@import 'partials/main';
+@import 'partials/reset';
+@import 'partials/landing';
+@import 'partials/about';
+@import 'partials/media-queries';

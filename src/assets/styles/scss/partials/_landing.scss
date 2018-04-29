@@ -1,0 +1,109 @@
+#landing {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: auto;
+    top: 0;
+    .landing-overlay {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+    .parallax {
+        vertical-align: middle;
+        height: 100vh;
+        width: 100%;
+        max-width: none;
+        display: table;
+        background-color: #2e3842;
+        // animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+        animation: bg-fade-in 5s ease 2s 1 normal forwards running;
+        @keyframes bg-fade-in {
+            0% { background-color: #2e3842; }
+            100% { background-color: transparent; }
+        }
+        .content {
+            width: 100%;
+            color: white;
+            margin: 0 auto;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            position: relative;
+            .intro {
+                display: inline-block;
+                margin: 0 auto;
+                text-align: center;
+                .fade-in {
+                    animation: fade-in 1.25s ease 1 normal forwards running;
+                    @keyframes fade-in {
+                        0% { opacity: 0; }
+                        66% { opacity: 0; }
+                        100% { width: 1; }
+                    }
+                }
+                .text, .words-wrapper {
+                    display: inline-block;
+                    position: relative;
+                }
+                .text {
+                    padding: 0.35em 1em 0 1em;
+                    &:before {
+                        height: 2px;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+                .words-wrapper{
+                    padding: 0 1em 0.35em 1em;
+                    width: 75%;
+                    &:after {
+                        height: 1px;
+                        bottom: 0;
+                        right: 0;
+                    }
+                }
+                .text:before, .words-wrapper:after{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    background: white;
+                    opacity: 0.65;
+                    animation: stretch 0.65s ease-out 1.3s 1 normal forwards running;
+                    @keyframes stretch {
+                        0% { width: 0; }
+                        100% { width: 100%; }
+                    }
+                }
+                .highlight { color: #E31B6D; }
+            }
+            .page-scroll {
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 4em;
+                a {
+                    text-align: center;
+                    color: #04C2C9;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+// Controls typing animation
+.is-hidden { visibility: hidden; }
+.is-visible { visibility: visible; }
+// Down carrot
+.arrow {
+    border: solid #04C2C9;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.down { @include transform-rotate(45deg); }

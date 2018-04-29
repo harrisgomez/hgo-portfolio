@@ -1,0 +1,38 @@
+#about {
+    .header {
+        border: 1px solid blue;
+    }
+}
+.skill-levels {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    top: 0;
+    border: 1px solid green;
+}
+// Profile frame
+.hexagon {
+    width: 800px;
+    height: 400px;
+    background: red;
+    @include transform-rotate(120deg);
+    margin-left: -150px;
+    overflow: hidden;
+    visibility: hidden;
+    .hexagon-inside {
+        width: 100%;
+        height: 100%;
+        background: green;
+        @include transform-rotate(-60deg);
+        overflow: hidden;
+    }
+    .hexagon-image {
+        width: 100%;
+        height: 100%;
+        background-image: url('~profile');
+        background-position: center;
+        background-size: 54% 100%;
+        @include transform-rotate(-60deg);
+        visibility: visible;
+    }
+}
