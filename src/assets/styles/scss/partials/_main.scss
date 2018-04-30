@@ -1,7 +1,14 @@
 // mixins for browser support
+
 @mixin transform-rotate($degree) {
     -moz-transform: rotate($degree);
     -ms-transform: rotate($degree);
     -o-transform: rotate($degree);
     -webkit-transform: rotate($degree);
+}
+@mixin animation($animationProps...) {
+    -webkit-animation: $animationProps;
+    -moz-animation: $animationProps;
+    -o-animation: $animationProps;
+    animation: $animationProps;
 }
