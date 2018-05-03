@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     var waiting_to_type = false;
     var description = ["web applications.", "user interfaces.", "Front-End solutions."];
     var current_descr = 0;

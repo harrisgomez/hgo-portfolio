@@ -1,12 +1,12 @@
-var webpack = require('webpack');
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     mode: "development",
     entry: {
-        app: "app"
+        app: "main.js"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -20,40 +20,28 @@ module.exports = {
         port: 3000
     },
     resolve: {
-        extensions: [".js", ".min.js", ".json", ".css", ".scss", ".jpg"],
+        extensions: [".js", ".jsx", ".min.js", ".json", ".css", ".scss", ".jpg"],
         modules: [
+            path.resolve(__dirname, 'vendors'),
             'node_modules',
             path.resolve(__dirname, 'src'),
             path.resolve(__dirname, 'src/assets/js'),
             path.resolve(__dirname, 'src/assets/styles/scss'),
             path.resolve(__dirname, 'src/assets/img'),
-            path.resolve(__dirname, 'vendors')
+            path.resolve(__dirname, 'src/components')
         ],
     },
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery'
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src/index.html'),
-            hash: true
-        }),
-        // removes dist and rebuilds new one each time
-        new CleanWebpackPlugin(['dist'])
-    ],
     module: {
         rules: [
             {
-                test: /\.s?css/,
                 use: [
                     { loader: 'style-loader' },
                     { loader: 'css-loader' },
                     { loader: 'sass-loader' },
-                ]
+                ],
+                test: /\.s?css/
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -63,8 +51,33 @@ module.exports = {
                             publicPath: 'images/'
                         }
                     }
-                ]
+                ],
+                test: /\.(png|svg|jpg|gif)$/
+            },
+            {
+                use: [
+                    {
+                        loader: 'babel-loader'
+                    }
+                ],
+                test: /\.jsx?$/,
+                exclude: /node_modules/
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            React: 'react',
+            ReactDOM: 'react-dom'
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src/index.html'),
+            inject: true,
+            hash: true
+        }),
+        // removes dist and rebuilds new one each time
+        new CleanWebpackPlugin(['dist'])
+    ]
 };
