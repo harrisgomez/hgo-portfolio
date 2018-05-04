@@ -16,6 +16,20 @@
         .page-scroll a { font-size: 0.87em; }
     }
 }
+@media only screen and (max-width: 768px) {
+    #about-wrapper {
+        .profile, .skill-levels {
+            display: block;
+            position: relative;
+            width: 100%;
+            margin-right: 0;
+        }
+        .hexagon {
+            width: 100%;
+            margin: auto;
+        }
+    }
+}
 @media only screen and (min-width: 768px) {
     #landing-wrapper .content {
         .text, .words-wrapper { font-size: 2.32em; }
