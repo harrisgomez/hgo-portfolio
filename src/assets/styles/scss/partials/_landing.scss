@@ -21,9 +21,8 @@
     max-width: none;
     display: table;
     background-color: #2e3842;
-    // animation: name duration timing-function delay iteration-count direction fill-mode play-state;
     @include animation(bg-fade-in 10s ease 1 normal forwards running);
-    @keyframes bg-fade-in {
+    @include keyframes(bg-fade-in) {
         0% { background-color: #2e3842; }
         25% { background-color: #2e3842; }
         100% { background-color: transparent; }
@@ -41,7 +40,7 @@
             margin: 0 auto;
             text-align: center;
             @include animation(intro-fade-in 1.25s ease 1 normal forwards running);
-            @keyframes intro-fade-in {
+            @include keyframes(intro-fade-in) {
                 0% { opacity: 0; }
                 66% { opacity: 0; }
                 100% { width: 1; }
@@ -74,7 +73,7 @@
                 background: white;
                 opacity: 0.65;
                 @include animation(stretch 0.65s ease-out 1.3s 1 normal forwards running);
-                @keyframes stretch {
+                @include keyframes(stretch) {
                     0% { width: 0; }
                     100% { width: 100%; }
                 }
@@ -92,8 +91,8 @@
                 color: #04C2C9;
                 text-decoration: none;
             }
-            animation: scroll-fade-in 10s ease 1 normal forwards running;
-            @keyframes scroll-fade-in {
+            @include animation(scroll-fade-in 10s ease 1 normal forwards running);
+            @include keyframes(scroll-fade-in) {
                 0% { opacity: 0; }
                 25% { opacity: 0; }
                 100% { opacity: 1; }

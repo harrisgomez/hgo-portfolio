@@ -1,5 +1,5 @@
-// this imports _main.scss module
 // don't require the '_' or file extension when importing
+// import mixins first, queries last
 @import 'partials/main';
 @import 'partials/reset';
 @import 'partials/landing';

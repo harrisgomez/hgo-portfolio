@@ -1,17 +1,23 @@
 // mixins for browser support
-
 @mixin transform-rotate($degree) {
+    -webkit-transform: rotate($degree);
     -moz-transform: rotate($degree);
     -ms-transform: rotate($degree);
     -o-transform: rotate($degree);
-    -webkit-transform: rotate($degree);
+    transform: rotate($degree);
 }
+// animation: name duration timing-function delay iteration-count direction fill-mode play-state;
 @mixin animation($animationProps...) {
     -webkit-animation: $animationProps;
     -moz-animation: $animationProps;
+    -ms-animation: $animationProps;
     -o-animation: $animationProps;
     animation: $animationProps;
 }
-#app {
-    position: relative;
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{ $animationName } { @content; }
+    @-moz-keyframes #{ $animationName } { @content; }
+    @-ms-keyframes #{ $animationName } { @content; }
+    @-o-keyframes #{ $animationName } { @content; }
+    @keyframes #{ $animationName } { @content; }
 }
