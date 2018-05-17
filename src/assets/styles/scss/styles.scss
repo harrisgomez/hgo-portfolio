@@ -2,6 +2,7 @@
 // import mixins first, queries last
 @import 'partials/main';
 @import 'partials/reset';
+@import 'partials/global';
 @import 'partials/landing';
 @import 'partials/about';
-@import 'partials/media-queries';
+// @import 'partials/media-queries';

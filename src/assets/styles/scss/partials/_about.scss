@@ -1,38 +1,30 @@
 #about-wrapper {
     width: 100%;
-    height: 100vh;
-    position: absolute;
+    height: 100%;
+    position: fixed;
     top: 0;
     left: 0;
-    // set z-index: < -100 since -100 used by parallax-mirror
-    z-index: -200;
+    z-index: -1;
     background-color: #1c3e43;
 }
-.table {
-    display: table;
-    table-layout: fixed;
-    border-collapse: collapse;
-    width: 100%;
-    height: 100%;
-}
-.table-row { display: table-row; }
-.table-cell {
-    display: table-cell;
-    vertical-align: middle;
-}
 .header {
-    text-align: center;
+    font-size: 1.5em;
 }
-.profile, .skill-levels {
-    width: 50%;
-}
-.profile {
-    border: 1px solid red;
-    // Profile frame
+.profile-wrapper {
+    border: 4px solid red;
+    justify-content: center;
+    @include for-tablet-portrait-up {
+        flex-direction: row;
+    }
     .hexagon {
-        height: 300px;
-        width: 600px;
-        margin: 0 auto;
+        @include for-phone-only {
+            height: 200px;
+            width: 100%;
+        }
+        @include for-tablet-portrait-up {
+            height: 250px;
+            width: 50%;
+        }
         @include transform-rotate(120deg);
         overflow: hidden;
         visibility: hidden;
@@ -52,42 +44,167 @@
         @include transform-rotate(-60deg);
         visibility: visible;
     }
-}
-.skill-levels {
-    width: 50%;
-    color: white;
-    .bar {
-        background: linear-gradient(to right, black 50%, white 50%);
-        background-size: 200% 100%;
-        background-position: right bottom;
-
+    .text {
+        border: 2px solid yellow;
+        color: white;
+        @include for-tablet-portrait-up { width: 50%; }
     }
-    $skillsList: (
-        'html': 90,
-        'css': 80,
-        'js': 70,
-        'webpack': 50,
-        'responsive': 70,
-        'ui': 60
-    );
-    // create classes using keyswords from skillsList and animate each bar
-    @each $skillName, $skillLevel in $skillsList {
-        // calculates the list's value and inverses it to fill the bar (ex. 90% = bar fills up to 90% instead of 10%)
-        $percentage: 100 - $skillLevel;
-        .skill-#{$skillName} {
-            @include animation(skill-fill-#{$skillName} 1.5s ease-out 1s 1 normal forwards running);
-            @include keyframes(skill-fill-#{$skillName}) {
-                0% { background-position: right bottom; }
-                100% { background-position: #{$percentage}% bottom; }
-            }
+}
+.modal {
+    position: absolute;
+    // top: 50%;
+    // @include transform(translateY(-50%));
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    border: 4px solid purple;
+    color: white;
+    object {border: 2px solid orange;}
+    embed {border: 2px solid teal;}
+}
+
+
+// right-pointing left arrow
+// .skill-levels::before {
+//     content: '';
+//     display: inline-block;
+//     height: 0;
+//     width: 0;
+//     position: absolute;
+//     border-top: 125px solid transparent;
+//     border-bottom: 125px solid transparent;
+//     border-left: 100px solid yellow;
+// }
+// right-pointing right arrow
+
+$left-margin: 0px;
+$right-margin: 400px;
+$skillsList: (
+    'html': (90, $left-margin - 40, $right-margin + 40),
+    'css': (80, $left-margin - 20, $right-margin + 20),
+    'js': (70, $left-margin, $right-margin),
+    'webpack': (50, $left-margin, $right-margin),
+    'ui': (70, $left-margin - 25, $right-margin + 25),
+    'responsive': (60, $left-margin - 50, $right-margin + 45)
+);
+// create classes using keyswords from skillsList and animate each bar
+@each $skillName, $skillLevel in $skillsList {
+    // calculates the list's value and inverses it to fill the bar (ex. 90% = bar fills up to 90% instead of 10%)
+    $percentage: 100 - nth($skillLevel, 1);
+    .skill-#{$skillName} {
+        border: 1px solid magenta;
+        flex: 1;
+        // margin-left: nth($skillLevel, 2);
+        // margin-right: nth($skillLevel, 3);
+        @include animation(skill-fill-#{$skillName} 1.5s ease-out 1s 1 normal forwards running);
+        @include keyframes(skill-fill-#{$skillName}) {
+            0% { background-position: right bottom; }
+            100% { background-position: #{$percentage}% bottom; }
         }
     }
-
-    // skew
-    .skill-html, .skill-css, .skill-js {
-        border: 1px solid blue;
-    }
-    .skill-webpack, .skill-ui, .skill-responsive {
-        border: 1px solid yellow;
-    }
 }
+
+
+
+
+
+// .table {
+//     display: table;
+//     table-layout: fixed;
+//     // border-collapse: collapse;
+//     width: 100%;
+//     height: 100%;
+// }
+// .t-row { display: table-row; }
+// .t-cell {
+//     display: table-cell;
+//     vertical-align: middle;
+//     border: 1px solid cyan;
+// }
+// .header {
+//     text-align: center;
+// }
+// .profile, .skill-levels {
+//     width: 25%;
+// }
+// .profile {
+//     margin: 0 auto;
+//     border: 1px solid red;
+//     // Profile frame
+//     .hexagon {
+//         height: 100%;
+//         width: 600px;
+//         margin: 0 auto;
+//         @include transform-rotate(120deg);
+//         overflow: hidden;
+//         visibility: hidden;
+//     }
+//     .hexagon-inside {
+//         width: 100%;
+//         height: 100%;
+//         @include transform-rotate(-60deg);
+//         overflow: hidden;
+//     }
+//     .hexagon-me {
+//         width: 100%;
+//         height: 100%;
+//         background-image: url('~profile');
+//         background-position: 50% 15%;
+//         background-size: 400px 400px;
+//         @include transform-rotate(-60deg);
+//         visibility: visible;
+//     }
+// }
+// .skill-levels {
+//     width: 50%;
+//     color: red;
+//     .table {
+//         // border-collapse: separate;
+//         // border-spacing: 0px;
+//     }
+//     .t-cell {
+//
+//     }
+//     .skew-positive {
+//         transform: skew(30deg);
+//     }
+//     .skew-negative {
+//         transform: skew(-30deg);
+//     }
+//     .text-wrapper {
+//         height: 100%;
+//         border: 1px solid yellow;
+//     }
+//     p { padding: 1%; }
+//     .animate-bg-color {
+//         background: linear-gradient(to right, black 50%, white 50%);
+//         background-size: 200% 100%;
+//         background-position: right bottom;
+//     }
+    // $left-margin: 0px;
+    // $right-margin: 400px;
+    // $skillsList: (
+    //     'html': (90, $left-margin - 40, $right-margin + 40),
+    //     'css': (80, $left-margin - 20, $right-margin + 20),
+    //     'js': (70, $left-margin, $right-margin),
+    //     'webpack': (50, $left-margin, $right-margin),
+    //     'ui': (70, $left-margin - 25, $right-margin + 25),
+    //     'responsive': (60, $left-margin - 50, $right-margin + 45)
+    // );
+    // // create classes using keyswords from skillsList and animate each bar
+    // @each $skillName, $skillLevel in $skillsList {
+    //     // calculates the list's value and inverses it to fill the bar (ex. 90% = bar fills up to 90% instead of 10%)
+    //     $percentage: 100 - nth($skillLevel, 1);
+    //     .skill-#{$skillName} {
+    //         margin-left: nth($skillLevel, 2);
+    //         margin-right: nth($skillLevel, 3);
+    //         @include animation(skill-fill-#{$skillName} 1.5s ease-out 1s 1 normal forwards running);
+    //         @include keyframes(skill-fill-#{$skillName}) {
+    //             0% { background-position: right bottom; }
+    //             100% { background-position: #{$percentage}% bottom; }
+    //         }
+    //     }
+    // }
+// }

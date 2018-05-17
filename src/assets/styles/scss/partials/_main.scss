@@ -1,3 +1,17 @@
+// mixins for media queries
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+
 // mixins for browser support
 @mixin transform-rotate($degree) {
     -webkit-transform: rotate($degree);
@@ -20,4 +34,11 @@
     @-ms-keyframes #{ $animationName } { @content; }
     @-o-keyframes #{ $animationName } { @content; }
     @keyframes #{ $animationName } { @content; }
+}
+@mixin transform($transformProp) {
+    -webkit-transform: $transformProp;
+    -moz-transform: $transformProp;
+    -ms-transform: $transformProp;
+    -o-transform: $transformProp;
+    transform: $transformProp;
 }

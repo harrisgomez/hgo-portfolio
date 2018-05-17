@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     mode: "development",
     entry: {
-        app: "main.js"
+        app: "app.js"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -20,28 +20,30 @@ module.exports = {
         port: 3000
     },
     resolve: {
-        extensions: [".js", ".jsx", ".min.js", ".json", ".css", ".scss", ".jpg"],
+        extensions: [".js", ".jsx", ".min.js", ".json", ".css", ".scss", ".jpg", ".pdf"],
         modules: [
             path.resolve(__dirname, 'vendors'),
             'node_modules',
             path.resolve(__dirname, 'src'),
             path.resolve(__dirname, 'src/assets/js'),
+            path.resolve(__dirname, 'src/assets/pdf'),
             path.resolve(__dirname, 'src/assets/styles/scss'),
             path.resolve(__dirname, 'src/assets/img'),
             path.resolve(__dirname, 'src/components')
-        ],
+        ]
     },
     module: {
         rules: [
             {
+                test: /\.s?css/,
                 use: [
                     { loader: 'style-loader' },
                     { loader: 'css-loader' },
-                    { loader: 'sass-loader' },
-                ],
-                test: /\.s?css/
+                    { loader: 'sass-loader' }
+                ]
             },
             {
+                test: /\.(png|jpg|gif)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -51,16 +53,31 @@ module.exports = {
                             publicPath: 'images/'
                         }
                     }
-                ],
-                test: /\.(png|svg|jpg|gif)$/
+                ]
             },
             {
-                use: [
-                    {
-                        loader: 'babel-loader'
-                    }
-                ],
+                test: /\.pdf$/,
+                use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'pdf/',
+                            publicPath: 'pdf/'
+                        }
+                }]
+            },
+            {
                 test: /\.jsx?$/,
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            'env',
+                            'react',
+                            'stage-0'
+                        ]
+                    }
+                }],
                 exclude: /node_modules/
             }
         ]

@@ -1,113 +1,208 @@
 #landing-wrapper {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     margin: auto;
     top: 0;
+    .container {
+        background: url('~parallax1');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
 }
 .landing-overlay {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     top: 0;
     bottom: 0;
     height: 100%;
     width: 100%;
-    z-index: -1;
 }
-.parallax {
-    vertical-align: middle;
+.colored-overlay {
+    position: absolute;
     height: 100vh;
     width: 100%;
-    max-width: none;
-    display: table;
     background-color: #2e3842;
-    @include animation(bg-fade-in 10s ease 1 normal forwards running);
+    @include animation(bg-fade-in 7.5s ease 1 normal forwards running);
     @include keyframes(bg-fade-in) {
         0% { background-color: #2e3842; }
         25% { background-color: #2e3842; }
         100% { background-color: transparent; }
     }
-    .content {
-        width: 100%;
-        color: white;
-        margin: 0 auto;
-        text-align: center;
-        vertical-align: middle;
-        display: table-cell;
-        position: relative;
-        .intro {
-            display: inline-block;
-            margin: 0 auto;
-            text-align: center;
-            @include animation(intro-fade-in 1.25s ease 1 normal forwards running);
-            @include keyframes(intro-fade-in) {
-                0% { opacity: 0; }
-                66% { opacity: 0; }
-                100% { width: 1; }
-            }
-            .text, .words-wrapper {
-                display: inline-block;
-                position: relative;
-            }
-            .text {
-                padding: 0.35em 1em 0 1em;
-                &:before {
-                    height: 2px;
-                    top: 0;
-                    left: 0;
-                }
-            }
-            .words-wrapper{
-                padding: 0 1em 0.35em 1em;
-                width: 75%;
-                &:after {
-                    height: 1px;
-                    bottom: 0;
-                    right: 0;
-                }
-            }
-            .text:before, .words-wrapper:after{
-                content: '';
-                display: block;
-                position: absolute;
-                background: white;
-                opacity: 0.65;
-                @include animation(stretch 0.65s ease-out 1.3s 1 normal forwards running);
-                @include keyframes(stretch) {
-                    0% { width: 0; }
-                    100% { width: 100%; }
-                }
-            }
-            .highlight { color: #E31B6D; }
+}
+.intro-wrapper {
+    z-index: 0;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    // margin-top: -100%;
+    // position: absolute;
+    // @include animation(logo-drop-in 0.5s ease 3.5s 1 normal forwards running);
+    // @include keyframes(logo-drop-in) {
+    //     0% {
+    //         margin-top: -100%;
+    //     }
+    //     100% {
+    //         margin-top: -20%;
+    //     }
+    // }
+}
+.intro {
+    @include animation(intro-fade-in 1.25s ease 1 normal forwards running);
+    @include keyframes(intro-fade-in) {
+        0% {
+            opacity: 0;
+            @include transform(scale(0));
         }
-        .page-scroll {
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 4em;
-            a {
-                text-align: center;
-                color: #04C2C9;
-                text-decoration: none;
-            }
-            @include animation(scroll-fade-in 10s ease 1 normal forwards running);
-            @include keyframes(scroll-fade-in) {
-                0% { opacity: 0; }
-                25% { opacity: 0; }
-                100% { opacity: 1; }
-            }
+        66% { opacity: 0; }
+        100% {
+            width: 1;
+            @include transform(scale(1));
         }
     }
+    .highlight { color: #E31B6D; }
 }
+.intro-wrapper .text {
+    color: white;
+    font-size: 1.2em;
+    padding: 20px;
+    h2:nth-of-type(1) { padding: 10px 0.7em 0; margin: 0; }
+    h2:nth-of-type(2) { padding: 0 0.7em 10px; margin: 0; }
+    &::before {
+        content: '';
+        display: block;
+        background: white;
+        width: 0;
+        height: 2px;
+        opacity: 1;
+        @include animation(stretch 0.65s ease-out 1.3s 1 normal forwards running);
+        @include keyframes(stretch) {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+    }
+    &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: white;
+        opacity: 1;
+        @include animation(stretch 0.65s ease-out 1.3s 1 normal forwards running);
+        @include keyframes(stretch) {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        margin-left: auto;
+    }
+}
+.page-scroll {
+    color: #04C2C9;
+    // down arrow
+    &::after {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        height: 7px;
+        width: 7px;
+        border: solid #04C2C9;
+        border-width: 0 1.5px 1.5px 0;
+        @include transform-rotate(45deg);
+        margin-top: -5px;
+    }
+}
+// .content {
+//     width: 100%;
+//     color: white;
+//     margin: 0 auto;
+//     text-align: center;
+//     vertical-align: middle;
+//     display: table-cell;
+//     position: relative;
+//     .intro {
+//         display: inline-block;
+//         margin: 0 auto;
+//         text-align: center;
+//         @include animation(intro-fade-in 1.25s ease 1 normal forwards running);
+//         @include keyframes(intro-fade-in) {
+//             0% {
+//                 opacity: 0;
+//                 @include transform(scale(0));
+//             }
+//             66% { opacity: 0; }
+//             100% {
+//                 width: 1;
+//                 @include transform(scale(1));
+//             }
+//         }
+//         h2 { margin-bottom: 0; }
+//         .text, .words-wrapper {
+//             display: inline-block;
+//             position: relative;
+//         }
+//         .text {
+//             padding: 0.35em 1em 0 1em;
+//             &:before {
+//                 height: 2px;
+//                 top: 0;
+//                 left: 0;
+//             }
+//         }
+//         .words-wrapper {
+//             padding: 0 1em 0.35em 1em;
+//             width: 75%;
+//             &:after {
+//                 height: 1px;
+//                 bottom: 0;
+//                 right: 0;
+//             }
+//             i { font-weight: 700; }
+//         }
+//         .text:before, .words-wrapper:after {
+//             content: '';
+//             display: block;
+//             position: absolute;
+//             background: white;
+//             opacity: 0.65;
+//             @include animation(stretch 0.65s ease-out 1.3s 1 normal forwards running);
+//             @include keyframes(stretch) {
+//                 0% { width: 0; }
+//                 100% { width: 100%; }
+//             }
+//         }
+//         .highlight { color: #E31B6D; }
+//     }
+//     .page-scroll {
+//         display: block;
+//         position: absolute;
+//         left: 0;
+//         right: 0;
+//         a {
+//             text-align: center;
+//             color: #04C2C9;
+//             text-decoration: none;
+//         }
+//         @include animation(scroll-fade-in 10s ease 1 normal forwards running);
+//         @include keyframes(scroll-fade-in) {
+//             0% { opacity: 0; }
+//             25% { opacity: 0; }
+//             100% { opacity: 1; }
+//         }
+//     }
+// }
 // Controls typing animation
 .is-hidden { visibility: hidden; }
 .is-visible { visibility: visible; }
 // Down carrot
-.arrow {
-    border: solid #04C2C9;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-}
-.down { @include transform-rotate(45deg); }
+// .arrow {
+//     width: 3px;
+//     height: 3px;
+//     border: solid #04C2C9;
+//     border-width: 0 1.5px 1.5px 0;
+//     display: inline-block;
+//     padding: 3px;
+// }
+// .down { @include transform-rotate(45deg); }
