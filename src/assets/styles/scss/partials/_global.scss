@@ -4,11 +4,12 @@
     border: 4px solid cyan;
     position: relative;
     @include for-phone-only { padding: 70px 0; }
-    align-items: center;
-    justify-content: center;
 }
+header { font-size: 1.5em; }
 .flex {
     display: flex;
+    align-items: center;
+    justify-content: center;
     // border: 4px solid cyan;
 }
 .flex.col { flex-direction: column; }

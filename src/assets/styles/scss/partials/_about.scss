@@ -3,12 +3,8 @@
     height: 100%;
     position: fixed;
     top: 0;
-    left: 0;
     z-index: -1;
     background-color: #1c3e43;
-}
-.header {
-    font-size: 1.5em;
 }
 .profile-wrapper {
     border: 4px solid red;
@@ -79,32 +75,7 @@
 // }
 // right-pointing right arrow
 
-$left-margin: 0px;
-$right-margin: 400px;
-$skillsList: (
-    'html': (90, $left-margin - 40, $right-margin + 40),
-    'css': (80, $left-margin - 20, $right-margin + 20),
-    'js': (70, $left-margin, $right-margin),
-    'webpack': (50, $left-margin, $right-margin),
-    'ui': (70, $left-margin - 25, $right-margin + 25),
-    'responsive': (60, $left-margin - 50, $right-margin + 45)
-);
-// create classes using keyswords from skillsList and animate each bar
-@each $skillName, $skillLevel in $skillsList {
-    // calculates the list's value and inverses it to fill the bar (ex. 90% = bar fills up to 90% instead of 10%)
-    $percentage: 100 - nth($skillLevel, 1);
-    .skill-#{$skillName} {
-        border: 1px solid magenta;
-        flex: 1;
-        // margin-left: nth($skillLevel, 2);
-        // margin-right: nth($skillLevel, 3);
-        @include animation(skill-fill-#{$skillName} 1.5s ease-out 1s 1 normal forwards running);
-        @include keyframes(skill-fill-#{$skillName}) {
-            0% { background-position: right bottom; }
-            100% { background-position: #{$percentage}% bottom; }
-        }
-    }
-}
+
 
 
 

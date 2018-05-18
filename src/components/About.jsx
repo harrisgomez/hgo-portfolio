@@ -1,13 +1,12 @@
 {/*import Resume from 'Resume';*/}
+import Header from 'Header';
 
 export default class About extends React.Component {
     render() {
         return (
             <div id='about-wrapper'>
                 <div className='container flex col'>
-                    <div className="header">
-                        <h1>ABOUT</h1>
-                    </div>
+                    <Header title='About'/>
                     <div className='profile-wrapper flex col'>
                         <div className='hexagon'>
                             <div className='hexagon-inside'>
@@ -21,15 +20,6 @@ export default class About extends React.Component {
                             Since then, my passion for UI effects has grown as I continue to learn more ways to create intuitive and dynamic user experiences.<br />
                             This portfolio is an ongoing project of mine that I'll regularly update with more cool things to share with you all.
                         </div>
-
-                        {/*<div className='skill-levels flex'>
-                            <div className='skill-html flex'>HTML</div>
-                            <div className='skill-css flex'>CSS</div>
-                            <div className='skill-js flex'>JavaScript</div>
-                            <div className='skill-webpack flex'>Webpack</div>
-                            <div className='skill-ui flex'>UI Design</div>
-                            <div className='skill-responsive flex'>Responsive Design</div>
-                        </div>*/}
                     </div>
                 </div>
                 {/*<div className='modal'>
