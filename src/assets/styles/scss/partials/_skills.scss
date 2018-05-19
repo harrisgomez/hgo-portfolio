@@ -5,6 +5,10 @@
     top: 0;
     z-index: -2;
     background-color: yellow;
+    .container {
+        border: 4px solid black;
+        & > div { margin-bottom: 15px; }
+    }
 }
 $left-margin: 0px;
 $right-margin: 400px;
@@ -16,13 +20,14 @@ $skillsList: (
     'ui': (70, $left-margin - 25, $right-margin + 25),
     'responsive': (60, $left-margin - 50, $right-margin + 45)
 );
-// create classes using keyswords from skillsList and animate each bar
+// creates classes using keyswords from skillsList and animate each bar
 @each $skillName, $skillLevel in $skillsList {
     // calculates the list's value and inverses it to fill the bar (ex. 90% = bar fills up to 90% instead of 10%)
     $percentage: 100 - nth($skillLevel, 1);
     .skill-#{$skillName} {
         border: 1px solid magenta;
-        flex: 1;
+        height: 20px;
+        margin-bottom: 15px;
         // margin-left: nth($skillLevel, 2);
         // margin-right: nth($skillLevel, 3);
         @include animation(skill-fill-#{$skillName} 1.5s ease-out 1s 1 normal forwards running);

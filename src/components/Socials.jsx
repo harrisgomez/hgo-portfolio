@@ -6,9 +6,6 @@ export default class Socials extends React.Component {
             <div id='socials-wrapper'>
                 <div className='container flex col'>
                     <Header title='Socials' />
-                    <div className='socials-wrapper flex col'>
-
-                    </div>
                 </div>
             </div>
         );

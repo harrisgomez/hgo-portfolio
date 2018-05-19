@@ -7,7 +7,7 @@ export default class About extends React.Component {
             <div id='about-wrapper'>
                 <div className='container flex col'>
                     <Header title='About'/>
-                    <div className='profile-wrapper flex col'>
+                    <div className='content flex col'>
                         <div className='hexagon'>
                             <div className='hexagon-inside'>
                                 <div className='hexagon-me'></div>

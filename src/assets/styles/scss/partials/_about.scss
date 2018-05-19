@@ -5,46 +5,44 @@
     top: 0;
     z-index: -1;
     background-color: #1c3e43;
-}
-.profile-wrapper {
-    border: 4px solid red;
-    justify-content: center;
-    @include for-tablet-portrait-up {
-        flex-direction: row;
-    }
-    .hexagon {
-        @include for-phone-only {
-            height: 200px;
-            width: 100%;
-        }
+    .content {
         @include for-tablet-portrait-up {
-            height: 250px;
-            width: 50%;
+            flex-direction: row;
         }
-        @include transform-rotate(120deg);
-        overflow: hidden;
-        visibility: hidden;
+        .text {
+            border: 2px solid yellow;
+            color: white;
+            @include for-tablet-portrait-up { width: 50%; }
+        }
     }
-    .hexagon-inside {
+}
+.hexagon {
+    @include for-phone-only {
+        height: 200px;
         width: 100%;
-        height: 100%;
-        @include transform-rotate(-60deg);
-        overflow: hidden;
     }
-    .hexagon-me {
-        width: 100%;
-        height: 100%;
-        background-image: url('~profile');
-        background-position: 50% 15%;
-        background-size: 400px 400px;
-        @include transform-rotate(-60deg);
-        visibility: visible;
+    @include for-tablet-portrait-up {
+        height: 250px;
+        width: 50%;
     }
-    .text {
-        border: 2px solid yellow;
-        color: white;
-        @include for-tablet-portrait-up { width: 50%; }
-    }
+    @include transform-rotate(120deg);
+    overflow: hidden;
+    visibility: hidden;
+}
+.hexagon-inside {
+    width: 100%;
+    height: 100%;
+    @include transform-rotate(-60deg);
+    overflow: hidden;
+}
+.hexagon-me {
+    width: 100%;
+    height: 100%;
+    background-image: url('~profile');
+    background-position: 50% 15%;
+    background-size: 400px 400px;
+    @include transform-rotate(-60deg);
+    visibility: visible;
 }
 .modal {
     position: absolute;
