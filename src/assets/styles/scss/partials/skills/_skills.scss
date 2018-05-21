@@ -10,14 +10,32 @@
         & > div { margin-bottom: 15px; }
     }
 }
+.bar {
+    background: linear-gradient(to right, black 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    span {
+        @include for-phone-only { display: none; }
+        display: flex;
+        margin-left: auto;
+    }
+}
+.tag {
+    align-items: center;
+    width: 80px;
+    background: green;
+    height: 100%;
+    color: white;
+    font-weight: bold;
+}
 $left-margin: 0px;
 $right-margin: 400px;
 $skillsList: (
     'html': (90, $left-margin - 40, $right-margin + 40),
     'css': (80, $left-margin - 20, $right-margin + 20),
     'js': (70, $left-margin, $right-margin),
-    'webpack': (50, $left-margin, $right-margin),
-    'ui': (70, $left-margin - 25, $right-margin + 25),
+    'webpack': (60, $left-margin, $right-margin),
+    'ui': (50, $left-margin - 25, $right-margin + 25),
     'responsive': (60, $left-margin - 50, $right-margin + 45)
 );
 // creates classes using keyswords from skillsList and animate each bar
@@ -25,6 +43,7 @@ $skillsList: (
     // calculates the list's value and inverses it to fill the bar (ex. 90% = bar fills up to 90% instead of 10%)
     $percentage: 100 - nth($skillLevel, 1);
     .skill-#{$skillName} {
+        justify-content: flex-start;
         border: 1px solid magenta;
         height: 20px;
         margin-bottom: 15px;

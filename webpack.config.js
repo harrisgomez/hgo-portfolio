@@ -26,8 +26,11 @@ module.exports = {
             'node_modules',
             path.resolve(__dirname, 'src'),
             path.resolve(__dirname, 'src/assets/js'),
+            path.resolve(__dirname, 'src/assets/js/effects'),
+            path.resolve(__dirname, 'src/assets/js/modules'),
             path.resolve(__dirname, 'src/assets/pdf'),
             path.resolve(__dirname, 'src/assets/styles/scss'),
+            path.resolve(__dirname, 'src/assets/styles/scss/partials'),
             path.resolve(__dirname, 'src/assets/img'),
             path.resolve(__dirname, 'src/components')
         ]

@@ -1,0 +1,37 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+html {
+    // standardize font across browsers
+    font-size: 16px;
+    width: 100%;
+    // allows scrolling. Adjust to num of pages
+    height: 600vh;
+}
+body {
+    font-family: 'Raleway', sans-serif;
+    // set context of body to roughly 10px font-size (16 html * 0.625 body = 10px body)
+    // convert to ems (target/context = result). Ex: h1 is 48px, 48/10 = 4.8
+    font-size: 62.5%;
+    text-align: center;
+}
+body::-webkit-scrollbar { display: none; }
+.container {
+    height: 100vh;
+    box-sizing: border-box;
+    border: 4px solid cyan;
+    position: relative;
+    @include for-phone-only { padding: 70px 0; }
+}
+.content {
+    border: 4px solid red;
+    padding: 0 50px;
+}
+header { font-size: 1.5em; }
+.flex {
+    display: flex;
+    justify-content: center;
+    // border: 4px solid cyan;
+}
+.flex.col { flex-direction: column; }

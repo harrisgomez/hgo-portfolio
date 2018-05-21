@@ -27,6 +27,3 @@ const App = () => {
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
-// ReactDOM.render(<Landing />, document.getElementById('landing-wrapper'));
-// ReactDOM.render(<About />, document.getElementById('about-wrapper'));
-// ReactDOM.render(<Resume />, document.getElementById('resume'));
