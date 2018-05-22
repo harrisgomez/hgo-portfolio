@@ -20,7 +20,7 @@ module.exports = {
         port: 3000
     },
     resolve: {
-        extensions: [".js", ".jsx", ".min.js", ".json", ".css", ".scss", ".jpg", ".pdf"],
+        extensions: [".js", ".jsx", ".min.js", ".json", ".css", ".scss", ".jpg", ".png"],
         modules: [
             path.resolve(__dirname, 'vendors'),
             'node_modules',
@@ -28,7 +28,6 @@ module.exports = {
             path.resolve(__dirname, 'src/assets/js'),
             path.resolve(__dirname, 'src/assets/js/effects'),
             path.resolve(__dirname, 'src/assets/js/modules'),
-            path.resolve(__dirname, 'src/assets/pdf'),
             path.resolve(__dirname, 'src/assets/styles/scss'),
             path.resolve(__dirname, 'src/assets/styles/scss/partials'),
             path.resolve(__dirname, 'src/assets/img'),
@@ -52,8 +51,8 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: 'images/',
-                            publicPath: 'images/'
+                            outputPath: 'img/',
+                            publicPath: 'img/'
                         }
                     }
                 ]

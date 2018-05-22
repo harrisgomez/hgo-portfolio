@@ -4,6 +4,13 @@
     position: fixed;
     top: 0;
     z-index: -3;
-    background-color: red;
-    .content {border: 1px solid black;}
+    background-color: green;
+}
+.projects {
+    flex-wrap: wrap;
+}
+.project {
+    height: 120px;
+    width: 120px;
+    border: 2px solid black;
 }

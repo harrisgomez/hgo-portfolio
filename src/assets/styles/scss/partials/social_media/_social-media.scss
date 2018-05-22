@@ -6,3 +6,15 @@
     z-index: -4;
     background-color: skyblue;
 }
+.socials {
+    flex-wrap: wrap;
+}
+.social {
+    height: 120px;
+    width: 120px;
+    border: 2px solid black;
+}
+img {
+    height: 100%;
+    width: 100%;
+}
