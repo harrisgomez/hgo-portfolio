@@ -13,7 +13,7 @@ export default class Landing extends React.Component {
                                 <h2 className='words-wrapper'></h2>
                             </div>
                         </div>
-                        <div className='page-scroll flex' style={{border:'4px solid gold'}}>
+                        <div className='page-scroll flex'>
                             <p>Learn more about me</p>
                         </div>
                     </div>

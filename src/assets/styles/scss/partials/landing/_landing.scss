@@ -100,18 +100,21 @@
     }
 }
 .page-scroll {
+    position: relative;
     color: #04C2C9;
     // down arrow
     &::after {
         content: '';
-        display: block;
+        position: absolute;
         margin: 0 auto;
+        margin-top: -5px;
+        top: 100%;
         height: 7px;
         width: 7px;
         border: solid #04C2C9;
         border-width: 0 1.5px 1.5px 0;
         @include transform-rotate(45deg);
-        margin-top: -5px;
+
     }
 }
 // .content {
